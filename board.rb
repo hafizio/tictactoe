@@ -12,6 +12,7 @@ class Board
     }
   end
 
+  #board
   def display
     puts "+- - - - - -+"
     for row in 0..BOARD_MAX_INDEX
@@ -27,5 +28,30 @@ class Board
       end
       puts "\n+- - - - - -+"
     end
+  end
+
+  def full?
+    for row in 0..BOARD_MAX_INDEX
+      for col in 0..BOARD_MAX_INDEX
+        if @board[row][col] == EMPTY_POS
+          return false
+        end
+      end
+    end
+    #if no open pos
+    return true
+  end
+
+  #game
+  def winner
+
+  end
+
+  def tie
+
+  end
+
+  def get_next_turn
+
   end
 end
