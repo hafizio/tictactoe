@@ -42,10 +42,56 @@ class Board
     return true
   end
 
-  #game
   def winner
+    winner = winner_rows
+    if winner
+      return winner
+    end
 
+    winner = winner_columns
+    if winner
+      return winner
+    end
+
+    winner = winner_diagonals
+    if winner
+      return winner
+    end
   end
+
+  def winner_rows
+    for row_index in 0..BOARD_MAX_INDEX
+      first_symbol = @board[row_index][0]
+      for col_index in 1..BOARD_MAX_INDEX
+        if first_symbol != @board[row_index][col_index]
+          break
+        elsif col_index == BOARD_MAX_INDEX and first_symbol != EMPTY_POS
+          return first_symbol
+        end
+      end
+    end
+    return
+  end
+
+  def winner_columns
+    for col_index in 0..BOARD_MAX_INDEX
+      first_symbol = @board[0][col_index]
+      for row_index in 1..BOARD_MAX_INDEX
+        if first_symbol != @board[row_index][col_index]
+          break
+        elsif row_index == BOARD_MAX_INDEX and first_symbol != EMPTY_POS
+          return first_symbol
+        end
+      end
+    end
+  end
+
+
+
+
+
+
+
 
   def tie
 
@@ -54,4 +100,5 @@ class Board
   def get_next_turn
 
   end
+
 end
