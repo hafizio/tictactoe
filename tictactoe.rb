@@ -1,5 +1,4 @@
 require_relative 'board'
-require_relative 'game'
 
 #start of game
 puts "Welcome to TicTacToe!"
@@ -10,8 +9,8 @@ b.display
 puts
 
 #gameplay(main: will be loop till the end of game)
-while not b.full? and not b.winner
-  b.ask_player_to_move(current_player)
+until b.full? && b.winner
+  b.ask_player_for_move(current_player)
   current_player = b.get_next_turn
   b.display
 end
